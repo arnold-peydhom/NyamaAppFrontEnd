@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation {
+    background-color: #f2f2f2;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul li {
+    padding: 10px;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+.content {
+    margin-left: 200px; /* pour laisser de la place à la barre de navigation */
+    padding: 20px;
+}

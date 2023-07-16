@@ -1,0 +1,47 @@
+<div class="shop">
+    <p class="shoptext">Ajouter une boutique</p>
+    <button routerLink="/list-boutique">Afficher les boutiques</button>
+</div>
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <div class="card"id="card">
+
+                    <form class="form-card" [formGroup] = "shopForm" (ngSubmit)="addShop()">
+                        <div class="row1"><br>
+                            <input type="text" name="" id="" placeholder="Noms" formControlName="name">
+                            <p><input type="checkbox" name="" id="" formControlName="isProspection"> En prospection</p>
+                           <label for="text">Choisir la ville &nbsp;</label> <select name="" id="city" placeholder="Ville" formControlName="city">
+                                    <option value="" *ngFor="let city of cityList" [value]="city.cityId">{{city.name}}</option>
+                            </select><br><br>
+                            <label for="text">Choisir le Quartier &nbsp;</label> <select name="" id="" placeholder="Quartier" formControlName="districtId">
+                                <option value="" *ngFor="let district of districtList" [value]="district.districtId">{{district.name}}</option>
+                            </select><br><br>
+                            <input type="text" name="" id="" placeholder="telephone 1" formControlName="firstPhone">
+                            <p><input type="checkbox" name="" id="" formControlName="iswhatsappFirstPhone"> Whatsapp</p>
+                            <input type="file" name="" id="" formControlName="imageId">
+                        </div><br>
+
+                        <div class="row2">
+                            <input type="text" name="" id="" placeholder="Gps Longitude" formControlName="gpsLongitude">
+                            &nbsp;  <input type="text" name="" id="" placeholder="Gps Latitude" formControlName="gpsLatitude"><br><br>
+                            
+                            <input type="text" name="" id="" placeholder="telephone 2" formControlName="secondPhone">
+                            <p><input type="checkbox" name="" id="" formControlName="iswhatsappSecondPhone"> Whatsapp</p>
+                            <input type="datetime-local" name="" id="" placeholder="date de creation" formControlName="creatingDate">
+                            &nbsp; <input type="datetime-local" name="" id="" placeholder="date d'adhesion" formControlName="joiningDate">
+                        </div><br>
+                                        
+                            <button type="submit" class="">Ajouter</button>&nbsp;  
+                            <button class=""id="btn" (click)="ngOnInit()">Annuler</button>
+                       
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+

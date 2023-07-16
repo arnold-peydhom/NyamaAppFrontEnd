@@ -1,0 +1,46 @@
+<p style="font-weight: bold;">Commandes</p><br>
+<p>Filtrer par ...</p>
+
+<form [formGroup]="listOrderForms" (ngSubmit)="filterOrder()" >
+<label>noms Boutique</label>&nbsp;
+    <select formControlName="shopId">
+    <option *ngFor="let listShops of listShop" [value]="listShops.shopId">{{getNameOfShop(listShops.shopId)}}</option>
+</select>&nbsp;<br><br>
+
+<p><input type="checkbox" formControlName="isPayed">&nbsp;payee</p>
+<label for="text">Quantite</label>&nbsp;<input type="number" placeholder="superieur a ..." formControlName="minQuantity">&nbsp;
+<input type="number" placeholder="inferieur a ..." formControlName="maxQuantity"> &nbsp;
+
+<label for="text">Date de commande</label>&nbsp;<input type="datetime-local" placeholder="superieur a ..." formControlName="minDateOfOrder">&nbsp;
+<input type="datetime-local" placeholder="inferieur a ..." formControlName="maxDateOfOrder"><br><br>
+
+<label for="text">Date de paiement</label>&nbsp;<input type="datetime-local" placeholder="superieur a ..." formControlName="minDateOfPayement">&nbsp;
+<input type="datetime-local" placeholder="inferieur a ..." formControlName="maxDateOfPayement"><br><br>
+<button class="searchBtn" type="submit">Search</button>
+</form><br>
+
+<button class="addOrder" routerLink="/commande">Ajouter une commande</button>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Boutique</th>
+        <th scope="col">Quantite</th>
+        <th scope="col">Date de commande</th>
+        <th scope="col">Date de paiement</th>
+        <th scope="col">Payee</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listOrders">
+        <td>{{getNameOfShop(list.shopId)}}</td>
+        <td>{{list.quantityOfBags}}</td>
+        <td>{{list.creatingDate}}</td>
+        <td>{{list.payementDate}}</td>
+        <td>{{list.isPayLater}}</td>
+        <td><button routerLink="/edit-order"><i class="fa fa-pencil"></i></button> &nbsp;<button><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+

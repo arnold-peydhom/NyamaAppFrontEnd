@@ -1,0 +1,13 @@
+<br>
+<form [formGroup]="orderForm" (ngSubmit)="addOrder()">
+    <label>Boutique</label>&nbsp;<select formControlName="ShopId">
+        <option *ngFor="let shop of shopList" [value]="shop.shopId">{{shop.name}}</option>
+    </select><br><br>
+    <label>Date commande</label>&nbsp;<input type="datetime-local" formControlName="creatingDate"><br><br>
+    <p><input type="checkbox" formControlName="isPayLater"> payer plutard</p>
+    <input type="number" placeholder="quantite" formControlName="quantityOfBags"><br><br>
+    <label>Date de Payement</label>&nbsp;<input type="datetime-local" formControlName="payementDate"><br><br>
+    <button>Annuler</button>&nbsp;
+    <button type="submit">Ajouter</button>&nbsp;
+    <button type="button" routerLink="/list-commande">Consulter les commandes</button>
+</form>

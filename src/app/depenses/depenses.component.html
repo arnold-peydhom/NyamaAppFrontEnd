@@ -1,0 +1,15 @@
+<br>
+<form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
+    <label>noms de la depense</label>&nbsp;<select placeholder="selectionner la depense" formControlName="expenseTypeId">
+        <option *ngFor="let expensetype of expenseList" [value]="expensetype.expenseTypeId">{{expensetype.name}}</option>
+    </select><br><br>
+    <input type="number" placeholder="quantite" formControlName="quantity"><br><br>
+    <input type="number" placeholder="Montant" formControlName="amount"><br><br>
+    <label>unite de la depense</label>&nbsp;<select placeholder="selectionner l'unite" formControlName="unitId">
+        <option *ngFor="let unit of unitList" [value]="unit.unitId">{{unit.name}}</option>
+    </select><br><br>
+    <input type="datetime-local" formControlName="dateOfExpense"><br><br>
+    <button (click)="initForm()">Annuler</button>&nbsp;
+    <button type="submit">Ajouter</button>&nbsp;
+    <button type="button" routerLink="/list-depenses">Lister les depenses</button>
+</form>

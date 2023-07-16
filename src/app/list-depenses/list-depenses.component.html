@@ -1,0 +1,39 @@
+<p style="font-weight: bold;">Depenses</p><br>
+<p>Filtrer par ...</p>
+
+<form [formGroup]="listExpenseForm" (ngSubmit)="filterExpense()">
+<label>noms de la depense &nbsp;</label>
+<select formControlName="expenseTypeId">
+    <option *ngFor="let list of listExpenseType"[value]="list.expenseTypeId">{{getNameByIdExpenseType(list.expenseTypeId)}}</option>
+</select>&nbsp;<br><br>
+
+<label for="text">Montant</label>&nbsp;<input type="number" placeholder="superieur a ..." formControlName="minAmount">&nbsp;
+<input type="number" placeholder="inferieur a ..." formControlName="maxAmount"> &nbsp;
+
+<label for="text">Date de depense</label>&nbsp;<input type="datetime-local" placeholder="superieur a ..." formControlName="minDateOfExpense">&nbsp;
+<input type="datetime-local" placeholder="inferieur a ..." formControlName="maxDateOfExpense"><br><br>
+<button class="searchBtn" type="submit">Search</button>
+</form><br>
+
+<button class="addExpense" routerLink="/depenses" >Ajouter une Depense</button>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Noms</th>
+        <th scope="col">Montant</th>
+        <th scope="col">Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listExpenses">
+        <td>{{getNameByIdExpenseType(list.expenseTypeId)}}</td>
+        <td>{{list.amount | currency:'EUR'}}</td>
+        <td>{{list.dateOfExpense}}</td>
+        <td><button routerLink="/edit-expense"><i class="fa fa-pencil"></i></button> &nbsp;<button (click)="deleteExpense(list.expenseId)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+

@@ -1,0 +1,15 @@
+<form [formGroup]="editExpenseForm">
+    <label>noms de la depense</label>&nbsp;
+    <select placeholder="selectionner la depense" formControlName="expenseTypeId">
+        <option *ngFor="let list of expenseList" [value]="list.expenseTypeId">{{list.name}}</option>
+    </select><br><br>
+    <input type="number" placeholder="quantite" formControlName="quantity"><br><br>
+    <input type="number" placeholder="Montant" formControlName="amount"><br><br>
+    <label>unite de la depense</label>&nbsp;
+    <select placeholder="selectionner l'unite" formControlName="unitId">
+        <option *ngFor="let unit of unitList" [value]="unit.unitId">{{unit.name}}</option>
+    </select><br><br>
+    <input type="datetime-local" formControlName="dateOfExpense"><br><br>
+    <button>Modifier</button>&nbsp;
+    <button type="submit">Annuler</button>&nbsp;
+</form>

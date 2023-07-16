@@ -1,0 +1,53 @@
+<p style="font-weight: bold;">Boutiques</p><br>
+<p>Filtrer par ...</p>
+
+<form [formGroup]="listShopForm">
+<input type="text" placeholder="noms" formControlName="nameShop">&nbsp;
+
+<select formControlName="city">
+    <option *ngFor="let city of cityList" [value]="city.cityId">{{city.name}}</option>
+</select>&nbsp;
+
+<select formControlName="districtId">
+    <option *ngFor="let district of listDistrict" [value]="district.districtId">{{district.name}}</option>
+</select>
+
+<p><input type="checkbox" formControlName="isProspection">&nbsp;En prospection</p>
+<label for="text">Date d'adhesion</label>&nbsp;<input type="datetime-local" placeholder="de ..." formControlName="minJoiningDate">&nbsp;
+<input type="datetime-local" placeholder="a ..." formControlName="maxJoiningDate"><br><br>
+<label for="text" class="marginInput">Commandes</label>&nbsp;<input type="number" placeholder="superieur a ..." class="marginInput" formControlName="minOrder">&nbsp;
+<input type="number" placeholder="inferieur a ..." class="marginInput" formControlName="maxOrder"><br><br>
+<label for="text" class="marginInput">Sachets</label>&nbsp;<input type="number" placeholder="superieur a ..." class="marginInput" formControlName="minQuantityOfBag">&nbsp;
+<input type="number" placeholder="inferieur a ..." class="marginInput" formControlName="maxQuantityOfBag"><button class="searchBtn" type="submit" (click)="getShopFilter()">Search</button>
+</form><br>
+
+<button class="addShop" routerLink="/boutique">Ajouter une Boutique</button>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Noms</th>
+        <th scope="col">Quartier</th>
+        <th scope="col">longitude</th>
+        <th scope="col">latitude</th>
+        <th scope="col">telephone</th>
+        <th scope="col">Date D'adhesion</th>
+        <th scope="col">Commande</th>
+        <th scope="col">Sachets</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shop of listShop">
+        <td>{{shop.name}}</td>
+        <td>{{getDistrictByName(shop.districtId)}}</td>
+        <td>{{shop.gpsLongigtude}}</td>
+        <td>{{shop.gpsLatitude}}</td>
+        <td>{{shop.firstPhone}}</td>
+        <td>{{shop.joiningDate}}</td>
+        <td>{{shop.numberOfOrder}}</td>
+        <td>{{shop.numberOfBags}}</td>
+        <td><button routerLink="edit-shop"><i class="fa fa-pencil"></i></button> <button (click)="deleteShop(shop.shopId)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
